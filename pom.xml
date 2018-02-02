@@ -91,7 +91,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>ebi.patternextract.main.PatternExtractor</mainClass>
+                        <mainClass>ontology.inferenceanalysis.main.InferenceAnalyser</mainClass>
                     </manifest>
                 </archive>
                 <descriptorRefs>
