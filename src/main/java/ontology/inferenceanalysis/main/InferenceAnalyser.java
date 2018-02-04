@@ -106,7 +106,7 @@ public class InferenceAnalyser {
             report.addEmptyLine();
         }
 
-        FileUtils.writeLines(new File(out,start+ "report_inference_analysis.txt"), report.getLines());
+        FileUtils.writeLines(new File(out,"report_inference_analysis.txt"), report.getLines());
     }
 
     private void printSuperInfo(Map<OWLClass, Set<OWLClass>> map, String label) {
@@ -206,7 +206,10 @@ public class InferenceAnalyser {
     }
 
     private OWLReasoner createDLReasoner(OWLOntology o) {
-        return new ReasonerFactory().createReasoner(o);
+        OntologyUtils.p("WARNING: REPLACE REASONER");
+        //TODO Replace reasoner
+        //return new ReasonerFactory().createReasoner(o);
+        return new ElkReasonerFactory().createReasoner(o);
     }
 
     private String printTime() {
