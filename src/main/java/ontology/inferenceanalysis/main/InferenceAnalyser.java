@@ -106,7 +106,7 @@ public class InferenceAnalyser {
             report.addEmptyLine();
         }
 
-        FileUtils.writeLines(new File(out,"report_inference_analysis.txt"), report.getLines());
+        FileUtils.writeLines(new File(out,"report_inference_analysis.md"), report.getLines());
     }
 
     private void printSuperInfo(Map<OWLClass, Set<OWLClass>> map, String label) {
