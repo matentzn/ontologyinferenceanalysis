@@ -56,13 +56,11 @@ public class InferenceAnalyser {
     }
 
     private void printResults(File out) throws IOException {
-        report.addLine("[[Inference analysis of corpus "+pd.getPath()+"]]");
-        report.addEmptyLine();
         report.addLine("# Analysing individual ontologies for inferences");
         for (File f: allAxiomsAcrossOntologies.keySet()) {
             report.addLine("## Ontology: " + f.getName());
-            OntologyUtils.p("");
-            OntologyUtils.p("#### ANALYSING ONTOLOG: "+f.getName());
+            report.addEmptyLine();
+            OntologyUtils.p("#### ANALYSING ONTOLOGY: "+f.getName());
             //...
             try {
                 OWLOntology o = OWLManager.createOWLOntologyManager().createOntology(allAxiomsAcrossOntologies.get(f));
@@ -120,13 +118,13 @@ public class InferenceAnalyser {
                 singleinheritance++;
             }
         }
-        OntologyUtils.p(label+": multiinheritance: "+multipleinheritance);
-        OntologyUtils.p(label+": singleinheritance: "+singleinheritance);
-        OntologyUtils.p(label+": % multi: "+Math.round((double)100*((double)multipleinheritance/(double)(multipleinheritance+singleinheritance))));
+        report.addLine("* "+label+": multiple inheritance: "+multipleinheritance);
+        report.addLine("* "+label+": single inheritance: "+singleinheritance);
+        report.addLine("* "+label+": % multiple inheritance: "+Math.round((double)100*((double)multipleinheritance/(double)(multipleinheritance+singleinheritance))));
     }
 
     private void printSubsInfo(Set<Subsumption> subs, String label) {
-        OntologyUtils.p(label+": Number subs: "+subs.size());
+        report.addLine("* "+label+": Number subs: "+subs.size());
     }
 
     private Map<OWLClass,Set<OWLClass>> getSuperClassMap(OWLReasoner r,OWLOntology o) {
