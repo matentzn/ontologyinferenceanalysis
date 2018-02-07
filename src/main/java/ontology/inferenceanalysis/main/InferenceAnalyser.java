@@ -204,10 +204,10 @@ public class InferenceAnalyser {
     }
 
     private OWLReasoner createDLReasoner(OWLOntology o) {
-        OntologyUtils.p("WARNING: REPLACE REASONER");
+        //OntologyUtils.p("WARNING: REPLACE REASONER");
         //TODO Replace reasoner
-        //return new ReasonerFactory().createReasoner(o);
-        return new ElkReasonerFactory().createReasoner(o);
+        return new ReasonerFactory().createReasoner(o);
+        //return new ElkReasonerFactory().createReasoner(o);
     }
 
     private String printTime() {
